@@ -487,6 +487,17 @@ def hsidrive_palette():
             [0, 0, 255], [102, 51, 0], [255, 255, 0], [0, 207, 250],
             [255, 166, 0], [0, 204, 204]]
 
+def magro_palette():
+    return [
+        [128, 64, 128], [0, 128, 0], [70, 130, 180], [220, 20, 60], [128, 128, 128]
+    ]
+
+
+def magro_classes():
+    return [
+        'road', 'vegetation', 'sky', 'obstacle', 'others'
+    ]
+
 
 dataset_aliases = {
     'cityscapes': ['cityscapes'],
@@ -510,7 +521,8 @@ dataset_aliases = {
     'hsidrive': [
         'hsidrive', 'HSIDrive', 'HSI-Drive', 'hsidrive20', 'HSIDrive20',
         'HSI-Drive20'
-    ]
+    ],
+    'magro': ['magro', 'MAgro']
 }
 
 
