@@ -8,6 +8,8 @@ Ante cualquier duda o incompatibilidad, se recomienda revisar la guía oficial d
 
 👉 https://mmsegmentation.readthedocs.io/en/latest/get_started.html
 
+---
+
 ### 🖥️ Entorno utilizado
 
 - **Sistema operativo:** Windows 10/11 usando **WSL 2.0**
