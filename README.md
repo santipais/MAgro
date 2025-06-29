@@ -88,6 +88,107 @@ pip install numpy==1.25 --force-reinstall
 python inference.py
 ```
 
+---
+
+## 🏋️‍♂️ Entrenamiento del modelo
+
+### ⚠️ Nota previa
+
+Antes de comenzar, si ocurre algún error relacionado al path de los módulos, ejecutar:
+
+```bash
+export PYTHONPATH=$(pwd):$PYTHONPATH
+```
+
+Y acordate de estar en el entorno de conda que instalamos!
+
+---
+
+### 📁 Preparar los datos
+
+1. Descargar las imágenes y etiquetas correspondientes.
+2. Colocar:
+   - Las imágenes en: `data/images`
+   - Las etiquetas en: `data/labels`
+
+3. Ejecutar el siguiente comando para dividir el dataset:
+
+```bash
+python tools/dataset_converters/magro.py --test <porcentaje_test> --val <porcentaje_val> --seed <semilla>
+```
+
+Por ejemplo:
+
+```bash
+python tools/dataset_converters/magro.py --test 0.1 --val 0.2 --seed 42
+```
+
+Por default se tiene un valor de test 0.2, val 0.15 (por lo que, 0.65 de train) y semilla 42.
+
+Esto generará las carpetas:
+
+```
+data/MAgro/images/
+data/MAgro/annotatios/
+```
+
+Cada una con sus correspondientes subcarpetas 
+```
+train/
+val/
+test/
+```
+
+---
+
+### 📥 Descargar checkpoint preentrenado
+
+1. Descargar el checkpoint deseado del cual partir para realizar el fine-tuning (por ejemplo, un modelo `SegFormer`). Más adelante comentaremos algunos checkpoints obtenidos y de los cual se recomendamos partir.
+2. Guardarlo en el directorio que prefieras.
+
+⚠️ Muy importante: editar el archivo `configs/MAgro/segformer_mit-b5_MAgro.py`  
+Ir a la **línea 30** y reemplazar la ruta del checkpoint con la ruta local donde lo guardaste.
+
+---
+
+### 🚀 Entrenar el modelo
+
+Ejecutar el siguiente comando:
+
+```bash
+python tools/train.py configs/MAgro/segformer_mit-b5_MAgro.py
+```
+
+El entrenamiento creara el archivo `work_dirs/segformer_mit-b5_MAgro/` donde se almacenara todos los pesos y logs.
+
+---
+
+### ℹ️ Detalles adicionales
+
+El archivo de configuración `configs/MAgro/segformer_mit-b5_MAgro.py` está configurado para:
+
+- Entrenar durante **40,000 iteraciones**
+- Guardar los pesos del modelo cada **5,000 iteraciones**
+
+Estos valores se pueden modificar dentro del mismo archivo de configuración según tus necesidades.
+
+---
+
+## 👀 Inferencia y Test del modelo.
+
+## 🧪 Test
+
+Para testear el modelo con un peso obtenido, simplemente ejecutar:
+
+```bash
+python tools/test.py ${CONFIG_FILE} ${CHECKPOINT_FILE}
+```
+Donde CONFIG_FILE probablemente será `configs/MAgro/segformer_mit-b5_MAgro.py` y CHEKPOINT_FILE será del estilo `work_dirs/segformer_mit-b5_MAgro/iter_5000.pth`
+
+## Inferencia
+
+Se crearon dos archivos, `inference.py` y `inference_dir.py` para inferar una imagen individual o un directorio de images respectivamente. En ambos casos se va a tener que modificar los archivos para utilizar el archivo config del modelo deseado, los pesos deseados y donde se quieren guardar los resultados. Las lineas a modificar para esto estan marcadas con un comment `# Modificar` al final
+
 
 ## 📖 Citación
 
