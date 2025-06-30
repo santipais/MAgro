@@ -1,4 +1,6 @@
 ## Introduction
+
+# Toolbox MMSegmentation
 ## ⚙️ Pasos de instalación
 
 ### ⚠️ Nota
@@ -189,8 +191,45 @@ Donde CONFIG_FILE probablemente será `configs/MAgro/segformer_mit-b5_MAgro.py` 
 
 Se crearon dos archivos, `inference.py` y `inference_dir.py` para inferar una imagen individual o un directorio de images respectivamente. En ambos casos se va a tener que modificar los archivos para utilizar el archivo config del modelo deseado, los pesos deseados y donde se quieren guardar los resultados. Las lineas a modificar para esto estan marcadas con un comment `# Modificar` al final
 
+---
 
-## 📖 Citación
+# 🏷️ Proceso de etiquetado
+
+## 1. Creación del entorno para etiquetar
+
+El proceso de etiquetado se realizó fuera de WSL, directamente en Windows, creando un nuevo entorno virtual `conda` y luego instalando la herramienta [Labelme](https://github.com/wkentaro/labelme):
+
+```bash
+conda create --name etiquetado python=3.8 -y
+conda activate etiquetado
+pip install labelme
+```
+
+---
+
+## 2. Asistencia por notebooks
+
+Durante el desarrollo, se utilizaron dos notebooks de Google Colab:
+
+- **Primer notebook:** se probaron distintos modelos de segmentación automática y se seleccionaron los resultados más similares a lo que buscábamos. Estas salidas se guardaban en escala de grises.
+- **Segundo notebook:** convertía esas máscaras grises a formato `JSON` con polígonos, compatibles con `Labelme`.
+- **Tercer notebook:** una vez finalizado el proceso de etiquetado con `Labelme`, se utilizó otro notebook para convertir las anotaciones en formato de polígonos (`JSON`) al formato compatible con MMSegmentation (máscaras en escala de grises).
+
+---
+
+## 3. Edición final con Labelme
+
+Una vez obtenidas las predicciones en formato `JSON` por el segundo notebook, se realizaron ajustes y retoques manuales ejecutando Labelme con el siguiente comando:
+
+```bash
+labelme {directorio_imagenes} --output {directorio_de_etiquetas}
+```
+
+Esto permitió generar las anotaciones finales en formato `Labelme`, que luego al pasar por el tecer notebook, se tienen las etiquetas listas para ser utilizadas por la toolbox MMSegmentation.
+
+---
+
+# 📖 Citación
 
 Este proyecto usa [MMSegmentation](https://github.com/open-mmlab/mmsegmentation). Si lo usas, para citarlo:
 
