@@ -86,6 +86,10 @@ pip install numpy==1.25 --force-reinstall
 
 ### 🚀 Probar que todo funciona
 
+Descargar checpoint y pegarlo en `checkpoints/`.
+
+Correr:
+
 ```bash
 python inference.py
 ```
@@ -200,7 +204,7 @@ Se crearon dos archivos, `inference.py` y `inference_dir.py` para inferar una im
 El proceso de etiquetado se realizó fuera de WSL, directamente en Windows, creando un nuevo entorno virtual `conda` y luego instalando la herramienta [Labelme](https://github.com/wkentaro/labelme):
 
 ```bash
-conda create --name etiquetado python=3.8 -y
+conda create --name etiquetado python=3.11 -y
 conda activate etiquetado
 pip install labelme
 ```
@@ -211,7 +215,7 @@ pip install labelme
 
 Durante el desarrollo, se utilizaron dos notebooks de Google Colab:
 
-- **Primer notebook:** se probaron distintos modelos de segmentación automática y se seleccionaron los resultados más similares a lo que buscábamos. Estas salidas se guardaban en escala de grises.
+- **Primer notebook:** Se convierte las máscaras de los resultados de inferir con el modelo `san-vit-l14_coco-stuff164k-640x640` , a las 5 clases deseadas por nosotros.
 - **Segundo notebook:** convertía esas máscaras grises a formato `JSON` con polígonos, compatibles con `Labelme`.
 - **Tercer notebook:** una vez finalizado el proceso de etiquetado con `Labelme`, se utilizó otro notebook para convertir las anotaciones en formato de polígonos (`JSON`) al formato compatible con MMSegmentation (máscaras en escala de grises).
 
