@@ -215,9 +215,9 @@ pip install labelme
 
 Durante el desarrollo, se utilizaron dos notebooks de Google Colab:
 
-- **Primer notebook:** Se convierte las máscaras de los resultados de inferir con el modelo `san-vit-l14_coco-stuff164k-640x640` , a las 5 clases deseadas por nosotros.
-- **Segundo notebook:** convertía esas máscaras grises a formato `JSON` con polígonos, compatibles con `Labelme`.
-- **Tercer notebook:** una vez finalizado el proceso de etiquetado con `Labelme`, se utilizó otro notebook para convertir las anotaciones en formato de polígonos (`JSON`) al formato compatible con MMSegmentation (máscaras en escala de grises).
+- **[RemapOfClasses](colabs/RemapOfClasses.ipynb):** Se convierte las máscaras de los resultados de inferir con el modelo `san-vit-l14_coco-stuff164k-640x640` , a las 5 clases deseadas por nosotros.
+- **[GrayScaleToLabelMe](colabs/GrayScaleToLableMe.ipynb):** convertía esas máscaras grises a formato `JSON` con polígonos, compatibles con `Labelme`.
+- **[LabelMeToGrayScaleAndImageVis](colabs/LabelMeToGrayScaleAndImageVis.ipynb):** una vez finalizado el proceso de etiquetado con `Labelme`, se utilizó otro notebook para convertir las anotaciones en formato de polígonos (`JSON`) al formato compatible con MMSegmentation (máscaras en escala de grises).
 
 ---
 
