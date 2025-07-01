@@ -233,6 +233,70 @@ Esto permitió generar las anotaciones finales en formato `Labelme`, que luego a
 
 ---
 
+
+
+# 📊 Resultados de Segmentación y Pesos
+
+A continuación se muestran los resultados y pesos obtenidos.
+Todos fueron entrenados mediante el mismo archivo de configuración, es decir con el mismo modelo, pero se cambio el dataset usado.
+Cada tabla incluye las métricas por clase (IoU y Accuracy), así como métricas globales como mIoU y aAcc.
+
+---
+
+## 🔷 Modelo 1: Dataset formado exclusivamente por imagenes nuestras.
+
+Este modelo usa un encoder básico con configuración estándar. Sirve como punto de partida para comparación.
+
+|   Class    |  IoU  |  Acc  |
+|------------|-------|-------|
+|    road    | 96.46 | 99.01 |
+| vegetation | 93.11 | 96.58 |
+|    sky     | 95.54 | 97.25 |
+|  obstacle  | 47.66 | 53.92 |
+|   others   |  8.24 |  8.62 |
+
+> **aAcc**: 96.94 &nbsp;&nbsp;&nbsp; **mIoU**: 68.20 &nbsp;&nbsp;&nbsp; **mAcc**: 71.08 &nbsp;&nbsp;&nbsp; **data_time**: 0.0079 &nbsp;&nbsp;&nbsp; **time**: 0.1589
+
+[Descargar peso]()
+
+---
+
+## 🔷 Modelo 2: Dataset formado por todas nuestras imagenes y las obtenidas con RELLIS-3D
+
+
+|   Class    |  IoU  |  Acc  |
+|------------|-------|-------|
+|    road    | 87.59 | 95.31 |
+| vegetation | 86.01 | 91.59 |
+|    sky     | 96.23 | 97.55 |
+|  obstacle  | 64.58 | 73.08 |
+|   others   | 80.33 | 84.71 |
+
+> **aAcc**: 93.95 &nbsp;&nbsp;&nbsp; **mIoU**: 82.95 &nbsp;&nbsp;&nbsp; **mAcc**: 88.45 &nbsp;&nbsp;&nbsp; **data_time**: 0.0032 &nbsp;&nbsp;&nbsp; **time**: 0.0989
+
+[Descargar peso]()
+
+---
+
+## 🔷 Modelo 3: Dataset equilibrado. (Todas nuestras imagenes y una selección de 200 de RELLIS-3d)
+
+En este modelo obtuvimos los mejores resultados. Son los pesos que recomendamos seguir la linea.
+
+
+|   Class    |  IoU  |  Acc  |
+|------------|-------|-------|
+|    road    | 90.32 | 97.85 |
+| vegetation | 92.26 | 95.51 |
+|    sky     | 95.32 | 97.65 |
+|  obstacle  | 64.95 | 68.15 |
+|   others   | 83.22 | 89.86 |
+
+> **aAcc**: 94.8 &nbsp;&nbsp;&nbsp; **mIoU**: 85.21 &nbsp;&nbsp;&nbsp; **mAcc**: 89.80 &nbsp;&nbsp;&nbsp; **data_time**: 0.0040 &nbsp;&nbsp;&nbsp; **time**: 0.1190
+
+[Descargar peso]()
+
+---
+
 # 📖 Citación
 
 Este proyecto usa [MMSegmentation](https://github.com/open-mmlab/mmsegmentation). Si lo usas, para citarlo:
