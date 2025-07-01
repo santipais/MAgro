@@ -61,8 +61,8 @@ mim install "mmcv==2.1.0"
 ### 📦 Clonar el repositorio y configurar el entorno
 
 ```bash
-git clone <URL-de-nuestro-repositorio>
-cd <nombre-del-repo>
+git clone git@github.com:santipais/MAgro.git
+cd MAgro
 pip install -v -e .
 ```
 
