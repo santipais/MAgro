@@ -245,8 +245,6 @@ Cada tabla incluye las métricas por clase (IoU y Accuracy), así como métricas
 
 ## 🔷 Modelo 1: Dataset formado exclusivamente por imagenes nuestras.
 
-Este modelo usa un encoder básico con configuración estándar. Sirve como punto de partida para comparación.
-
 |   Class    |  IoU  |  Acc  |
 |------------|-------|-------|
 |    road    | 96.46 | 99.01 |
