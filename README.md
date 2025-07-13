@@ -41,8 +41,8 @@ https://docs.conda.io/projects/conda/en/latest/user-guide/install/index.html
 ### 🧪 Crear y activar un entorno Conda
 
 ```bash
-conda create --name MAgro python=3.11 -y
-conda activate MAgro
+conda create --name malezas python=3.11 -y
+conda activate malezas
 ```
 
 ---
@@ -86,7 +86,7 @@ pip install numpy==1.25 --force-reinstall
 
 ### 🚀 Probar que todo funciona
 
-Descargar checpoint y pegarlo en `checkpoints/`.
+Descargar el checkpoint del modelo3 (lo encontras más abajo) y pegarlo en `checkpoints/`.
 
 Correr:
 
@@ -120,13 +120,13 @@ Y acordate de estar en el entorno de conda que instalamos!
 3. Ejecutar el siguiente comando para dividir el dataset:
 
 ```bash
-python tools/dataset_converters/magro.py --test <porcentaje_test> --val <porcentaje_val> --seed <semilla>
+python tools/dataset_converters/malezas.py --test <porcentaje_test> --val <porcentaje_val> --seed <semilla>
 ```
 
 Por ejemplo:
 
 ```bash
-python tools/dataset_converters/magro.py --test 0.1 --val 0.2 --seed 42
+python tools/dataset_converters/malezas.py --test 0.1 --val 0.2 --seed 42
 ```
 
 Por default se tiene un valor de test 0.2, val 0.15 (por lo que, 0.65 de train) y semilla 42.
@@ -134,8 +134,8 @@ Por default se tiene un valor de test 0.2, val 0.15 (por lo que, 0.65 de train) 
 Esto generará las carpetas:
 
 ```
-data/MAgro/images/
-data/MAgro/annotatios/
+data/malezas/images/
+data/malezas/annotatios/
 ```
 
 Cada una con sus correspondientes subcarpetas 
@@ -152,7 +152,7 @@ test/
 1. Descargar el checkpoint deseado del cual partir para realizar el fine-tuning (por ejemplo, un modelo `SegFormer`). Más adelante comentaremos algunos checkpoints obtenidos y de los cual se recomendamos partir.
 2. Guardarlo en el directorio que prefieras.
 
-⚠️ Muy importante: editar el archivo `configs/MAgro/segformer_mit-b5_MAgro.py`  
+⚠️ Muy importante: editar el archivo `configs/malezas/segformer_mit-b5_malezas.py`  
 Ir a la **línea 30** y reemplazar la ruta del checkpoint con la ruta local donde lo guardaste.
 
 ---
@@ -162,16 +162,16 @@ Ir a la **línea 30** y reemplazar la ruta del checkpoint con la ruta local dond
 Ejecutar el siguiente comando:
 
 ```bash
-python tools/train.py configs/MAgro/segformer_mit-b5_MAgro.py
+python tools/train.py configs/malezas/segformer_mit-b5_malezas.py
 ```
 
-El entrenamiento creara el archivo `work_dirs/segformer_mit-b5_MAgro/` donde se almacenara todos los pesos y logs.
+El entrenamiento creara el archivo `work_dirs/segformer_mit-b5_malezas/` donde se almacenara todos los pesos y logs.
 
 ---
 
 ### ℹ️ Detalles adicionales
 
-El archivo de configuración `configs/MAgro/segformer_mit-b5_MAgro.py` está configurado para:
+El archivo de configuración `configs/malezas/segformer_mit-b5_malezas.py` está configurado para:
 
 - Entrenar durante **40,000 iteraciones**
 - Guardar los pesos del modelo cada **5,000 iteraciones**
@@ -189,7 +189,7 @@ Para testear el modelo con un peso obtenido, simplemente ejecutar:
 ```bash
 python tools/test.py ${CONFIG_FILE} ${CHECKPOINT_FILE}
 ```
-Donde CONFIG_FILE probablemente será `configs/MAgro/segformer_mit-b5_MAgro.py` y CHEKPOINT_FILE será del estilo `work_dirs/segformer_mit-b5_MAgro/iter_5000.pth`
+Donde CONFIG_FILE probablemente será `configs/malezas/segformer_mit-b5_malezas.py` y CHEKPOINT_FILE será del estilo `work_dirs/segformer_mit-b5_malezas/iter_5000.pth`
 
 ## Inferencia
 
