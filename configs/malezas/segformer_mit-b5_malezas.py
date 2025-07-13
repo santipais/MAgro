@@ -1,5 +1,5 @@
 # ------------------------------------------------------------
-# Combined SegFormer‐MiT-B5 config for fine‐tuning on “MAgro”
+# Combined SegFormer‐MiT-B5 config for fine‐tuning on “Malezas”
 # - Backbone: MiT‐B5 (pretrained)
 # - Decoder: SegFormerHead with num_classes=5
 # - Backbone frozen (lr_mult=0)
@@ -10,7 +10,7 @@
 _base_ = [
     '../_base_/default_runtime.py',
     '../_base_/schedules/schedule_40k.py',
-    '../_base_/datasets/magro.py'  # Dataset config (5 classes) with pipelines
+    '../_base_/datasets/malezas.py'  # Dataset config (5 classes) with pipelines
 ]
 
 # ============= Data Preprocessor (mean/std/pad + crop size) =============
@@ -27,7 +27,7 @@ data_preprocessor = dict(
 
 # ============= Model Definition =============
 # Here define the path to the weights (.pth) to load from and start the fine tuning
-checkpoint = '/home/santi/FING/TSCF/TSCF-MMSeg-agronav/work_dirs/segformer_our_dataset_from_ADE_20_06/iter_40000.pth'
+checkpoint = '.../modelo3.pth'
 
 model = dict(
     type='EncoderDecoder',

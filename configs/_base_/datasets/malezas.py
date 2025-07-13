@@ -1,7 +1,7 @@
-# configs/_base_/datasets/magro.py
+# configs/_base_/datasets/malezas.py
 
-dataset_type = 'MAgroDataset'
-data_root = 'data/MAgro'
+dataset_type = 'MalezasDataset'
+data_root = 'data/malezas'
 
 classes = ['road', 'vegetation', 'sky', 'obstacle', 'others']
 

@@ -5,7 +5,7 @@ classes = ('road', 'vegetation', 'sky', 'obstacle', 'others')
 palette = [[128, 64, 128], [0, 128, 0], [70, 130, 180], [220, 20, 60], [128, 128, 128]]
 
 @DATASETS.register_module()
-class MAgroDataset(BaseSegDataset):
+class MalezasDataset(BaseSegDataset):
 
     METAINFO = dict(
         classes=classes,

@@ -68,7 +68,7 @@ if __name__ == "__main__":
     cwd = os.getcwd()
     image_dir = os.path.join(cwd, 'data', 'images')
     label_dir = os.path.join(cwd, 'data', 'labels')
-    output_dir = os.path.join(cwd, 'data', 'MAgro')
+    output_dir = os.path.join(cwd, 'data', 'malezas')
 
     split_dataset(
         image_dir=image_dir,

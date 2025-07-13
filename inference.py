@@ -9,18 +9,18 @@ import os
 cwd = os.getcwd()
 
 # Path to config file (.py)
-config_file = '/configs/MAgro/segformer_mit-b5_MAgro.py' #Modificar
+config_file = '/configs/malezas/segformer_mit-b5_malezas.py' #Modificar
 config_path = cwd + config_file
 
 # Path to checkpoint file (.pth)
-checkpoint_file = '/checkpoints/iter_40000.pth' #Modificar
+checkpoint_file = '/checkpoints/modelo3.pth' #Modificar
 checkpoint_path = cwd + checkpoint_file
 
 # Init model
 model = init_model(config_path, checkpoint_path, device='cuda:0')
 
 # Image path.
-image_filename = 'c3_ZoLPlT.jpg' #Modificar
+image_filename = 'demo.jpg' #Modificar
 image_path = os.path.join(cwd, image_filename)
 
 # Where will be saved.
